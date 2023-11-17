@@ -15,7 +15,7 @@
 - [Table of contents](#table-of-contents)
 - [Overview](#overview)
 - [Documentation](#documentation)
-- [Instruction Manual](#instruction-manual)
+- [Installation Manual](#installation-manual)
 - [Contributors](#contributors)
 
 ## Overview
@@ -38,7 +38,7 @@ To view documentations about Requirement Elicitation, System Modeling and Archit
 
 Full documentation are available at the docs directory of this repository.
 
-## Instruction Manual
+## Installation Manual
 
 TODO
 
