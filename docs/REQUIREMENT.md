@@ -1,8 +1,8 @@
 # Requirement
 
-## Table of content
+## Table of contents
 - [Requirement](#requirement)
-  - [Table of content](#table-of-content)
+  - [Table of contents](#table-of-contents)
   - [Domain Context](#domain-context)
   - [Stakeholders](#stakeholders)
   - [Functional Requirement](#functional-requirement)
