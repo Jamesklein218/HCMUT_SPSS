@@ -2,7 +2,7 @@
   <a href="#">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="docs/images/NamedLogo.png">
-      <img src="docs/images/NamedLogo.png" alt="Storybook" width="400" />
+      <img src="docs/images/NamedLogo.png" alt="Logo" width="400" />
     </picture>
     
   </a>
@@ -15,6 +15,7 @@
 - [Table of contents](#table-of-contents)
 - [Overview](#overview)
 - [Documentation](#documentation)
+- [Instruction Manual](#instruction-manual)
 - [Contributors](#contributors)
 
 ## Overview
@@ -29,11 +30,17 @@ Accessible via website, HCMUT_SSPS provides a user-friendly interface for review
 
 ## Documentation
 
-To view full documentation about Requirement Elicitation, System Modeling and Architecture, please head to the URLs below.
+To view documentations about Requirement Elicitation, System Modeling and Architecture,  visit to the URLs below.
 
 - [REQUIREMENT ELICITATION](/docs/REQUIREMENT.md)
 - [SYSTEM MODELING](/docs/MODELING.md)
 - [ARCHITECTURAL DESIGN](/docs/ARCHITECTURE.md)
+
+Full documentation are available at the docs directory of this repository.
+
+## Instruction Manual
+
+TODO
 
 ## Contributors
 - [Nguyen Thanh Tung]()
