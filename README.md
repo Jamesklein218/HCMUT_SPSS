@@ -40,8 +40,6 @@ Full documentation are available at the docs directory of this repository.
 
 ## Installation Manual
 
-TODO
-
 ## Contributors
 - [Nguyen Thanh Tung]()
 - [Nguyen Manh Thanh]()
