@@ -38,8 +38,8 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Each view’s layout should be defined by the actions of the users on that page. For an CRM dashboard style, each page should contain a side menu, which helps for navigating between views. Moreover, since the main action of the user when entering the web is to print a page, an add printing request button is added to the side menu. To better represent the general view, here is a general view of the user interface:
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="images/Layered.png">
-  <img src="images/Layered.png" alt="Class" width="600" />
+  <source media="(prefers-color-scheme: dark)" srcset="images/Presentation.png">
+  <img src="images/Presentation.png" alt="Presentation" width="600" />
 </picture>
 
 To see a fully featured user flow of the user interface, visit our System Modeling.
