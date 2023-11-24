@@ -1,14 +1,27 @@
 // import { useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import { Home, BuyPaper, History, Print, Profile, Login } from "./Pages";
-// import Home from "./Pages/Home/Home";
-// import BuyPaper from "./Pages/BuyPaper/BuyPaper"
-// import History from "./Pages/History/History"
-// import Print from "./Pages/Print/Print";
-// import Profile from "./Pages/Profile/Profile";
-// import Login from "./Pages/Login/Login";
-import { NavBar } from "./Components";
 import "./App.css";
+import { useEffect, useState } from "react";
+import { NavBar } from "./Components";
+
+const MaybeShowNavbar = ({children}) => {
+  const location = useLocation();
+  const [showNavbar, setShowNavbar] = useState(false);
+
+  useEffect(() => {
+    if (location.pathname === '/Login' || location.pathname === '/Print') {
+      setShowNavbar(false);
+    }
+    else {
+      setShowNavbar(true);
+    }
+  }, [location])
+
+  return (
+    <div>{showNavbar && children}</div>
+  )
+}
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -16,7 +29,9 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <NavBar />
+        <MaybeShowNavbar>
+          <NavBar/>
+        </MaybeShowNavbar>
         <div className="content">
           <Routes>
             <Route exact path="/" element={<Home />} />

@@ -1,0 +1,45 @@
+.login {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+}
+
+.leftBackground {
+    width: 70vw;
+    overflow: hidden;
+}
+
+.leftBackground img {
+    width: 100%;
+    height: 100%;
+}
+
+.rightLogin {
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    padding: 0 60px;
+    text-align: center;
+}
+
+.welcomeLogin p {
+    margin-top: 20px;
+}
+
+.welcomeLogin img {
+    width: 100%;
+    height: auto;
+}
+
+.loginBtn {
+    padding: 20px 40px;
+    border-radius: 10px;
+    background-color: #7F56D9;
+    color: white;
+    border: none;
+    width: 100%;
+    font-size: 1.2em;
+    margin-top: 40px;
+    cursor: pointer;
+}

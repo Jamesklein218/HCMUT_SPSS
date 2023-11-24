@@ -11,7 +11,7 @@ const NavBar = () => {
 
   return (
     <nav className="navbar">
-      <div className="navbar-logo">
+      <div className="logo">
         <img src="./Images/logo.png" alt="Logo" />
       </div>
       <div className="navbar-content">
@@ -39,8 +39,7 @@ const NavBar = () => {
           <img src="./Images/profile.png" alt="Profile Icon" />
           <p>Xem hồ sơ</p>
         </Link>
-      </div>
-      <div className="navbar-logout-section">
+
         <Link to="/Login" className={getNavItemClass("/Login")} id="logout">
           <img src="./Images/logout.png" alt="Logout Icon" />
           <p>Đăng xuất</p>
