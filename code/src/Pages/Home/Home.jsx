@@ -3,24 +3,8 @@ import React from 'react';
 import {Header, Footer} from "../../Components";
 import PrintingLog from "../../Components/PrintingLog/PrintingLog";
 
-const Home = () => {
-  // const [selectedPrintInfoIndex, setSelectedPrintInfoIndex] = useState(null);
-  const infoItemsFile = [
-    "1233.pdf", "1234.pdf", "1235.pdf"
-  ]
-
-  const infoItemsDate = [
-    "27/10/2023", "26/10/2023", "12/10/2023"
-  ];
-
-  const infoItemsPrinter = [
-    "B4-105", "C4-103", "B1-205"
-  ]
-
-  const infoItemsPage = [
-    "24 trang", "20 trang", "14 trang"
-  ]
-
+const Home = (props) => {
+  const { printInfoItems } = props;
   return (
     <div className="home">
       
@@ -52,13 +36,14 @@ const Home = () => {
 
           <div className="waitingLog">
             <p className="waitP">Đang chờ</p>
-            {infoItemsDate.map((date, i) => (
+            {printInfoItems.slice(0, 3).map((printInfo, i) => (
                 <PrintingLog
                   key={i}
-                  fileName={infoItemsFile[i]}
-                  date={infoItemsDate[i]}
-                  printer={infoItemsPrinter[i]}
-                  page={infoItemsPage[i]}
+                  fileName={printInfo.file}
+                  date={printInfo.date}
+                  printer={printInfo.printer}
+                  page={printInfo.page}
+                  printStatus={printInfo.printStatus}
                 />
               ))}
             

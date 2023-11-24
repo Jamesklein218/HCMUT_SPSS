@@ -3,7 +3,15 @@ import React, { useState } from 'react';
 import RemoveModal from "../RemoveModal/RemoveModal";
 const PrintingLog = (props) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-  
+    let statusClassName;
+
+    if (props.printStatus === "Đang chờ") {
+      statusClassName = "waiting";
+    } else if (props.printStatus === "Đã hủy") {
+      statusClassName = "canceled";
+    } else {
+      statusClassName = "success";
+    }
     const handleButtonClick = () => {
       setIsModalOpen(true);
     };
@@ -34,13 +42,13 @@ const PrintingLog = (props) => {
             </div>
           </div>
   
-          <div className="status">
-            <p>Đang chờ</p>
+          <div className={`${statusClassName}`}>
+            <p>{props.printStatus}</p>
           </div>
   
         </div>
   
-        <button className="bin" onClick={handleButtonClick}>
+        <button className={`bin ${statusClassName}`} onClick={handleButtonClick}>
           <img style={{ width: '30px', height: 'auto' }} src="./Images/bin.png" alt="bin" />
         </button>
   

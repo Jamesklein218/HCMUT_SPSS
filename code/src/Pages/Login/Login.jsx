@@ -10,7 +10,7 @@ const Login = () => {
     return (
       <div className="login">
         <div className="leftBackground">
-          <img src="./Images/background.png" alt="background"/>
+          
         </div>
 
         <div className="rightLogin">
