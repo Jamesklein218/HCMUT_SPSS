@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  flex-direction: row;
+  font-family: "Montserrat", sans-serif;
+}
+a {
+  text-decoration: none;
+}

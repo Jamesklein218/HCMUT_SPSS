@@ -1,0 +1,177 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/* body {
+  overflow-x: hidden;
+} */
+
+.home {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  max-height: 100%;
+  align-items: center;
+  flex-direction: column;
+}
+
+.header {
+  background-image: url('../../../public/Images/top-background.png');
+  background-size: cover;
+  background-position: bottom;
+  height: 100px;
+  width: 100%;
+}
+
+.contentSection {
+  flex-grow: 1;
+  width: 100%;
+  padding: 2.5% 2.5% 0 2.5%;
+  background-color: #F2F4F7;
+}
+
+.specialWelcome {
+  color: #42307D;
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.goodluck {
+  color: #6941C6;
+  margin-bottom: 15px;
+}
+
+.importantView {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.viewItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+  width: 40%;
+  margin-right: 20px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.1);
+}
+
+.viewItem:last-child {
+  margin-right: 0;
+}
+
+.viewImg {
+  background-color: #F4EBFF;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.data {
+  margin-left: auto;
+}
+
+.value {
+  color: #6941C6;
+  font-weight: bold;
+  font-size: 2em;
+  margin-bottom: 5px;
+  text-align: right;
+}
+
+.description {
+  color: #6941C6;
+}
+
+.waitingLog {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.waitP {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.printInfo {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+  padding: 20px 50px;
+  box-shadow: 0 -4px 4px 0px rgba(0, 0, 0, 0.1),
+            4px 0 4px 0 rgba(0, 0, 0, 0.1),
+            0 4px 4px 0 rgba(0, 0, 0, 0.1),
+            -4px 0 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.printInfo:last-child {
+  margin-bottom: 0;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+}
+
+.infoItemList {
+  display: flex;
+  flex-direction: row;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.infoItem img {
+  margin-right: 5px;
+}
+
+.status {
+  background-color: #FEF0C7;
+  color: #F79009;
+  width: fit-content;
+  border-radius: 30px;
+  padding: 10px 30px;
+  margin-top: 15px;
+}
+
+.bin {
+  display: flex;
+  align-items: center;
+  margin: auto 0 auto auto;
+  border: none;
+  cursor: pointer; 
+  width: fit-content;
+  padding: 0;
+  height: fit-content;
+  background-color: white;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  margin-top: auto;
+  width: 100%;
+  color: #667085;
+  background-color: #E4E7EC;
+  padding: 5px 2.5%;
+}
+
+.university {
+  margin-left: auto;
+}
+
+
