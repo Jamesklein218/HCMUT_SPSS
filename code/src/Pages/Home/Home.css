@@ -3,9 +3,9 @@
   margin: 0;
 }
 
-/* body {
+body {
   overflow-x: hidden;
-} */
+}
 
 .home {
   display: flex;
