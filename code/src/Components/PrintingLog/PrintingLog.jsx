@@ -2,8 +2,7 @@ import "./PrintingLog.css";
 import React, { useState } from 'react';
 import Modal from "../Modal/Modal";
 const PrintingLog = (props) => {
-    const {printingInfo} = props;
-    const {printItems} = props;
+    const { printingInfo, updatePrintInfoItems, printItems} = props;
     const [isModalOpen, setIsModalOpen] = useState(false);
     let statusClassName;
 
@@ -23,7 +22,9 @@ const PrintingLog = (props) => {
     };
 
     const handleConfirmModal = () => {
-        // props.printItems.
+      const newArray = printItems.filter(item => item !== printingInfo);
+      updatePrintInfoItems(newArray);
+      setIsModalOpen(false);
     }
 
     return(
@@ -60,7 +61,7 @@ const PrintingLog = (props) => {
         </button>
   
         {isModalOpen && 
-        <Modal onClick={handleConfirmModal} onClose={handleCloseModal} 
+        <Modal onConfirm={handleConfirmModal} onClose={handleCloseModal} 
         modalTitle={`Xác nhận huỷ đăng ký`} modalMessage={`Khi bấm "Đồng ý", bạn sẽ huỷ bỏ yêu cầu in của mình.`}/>}
         
         

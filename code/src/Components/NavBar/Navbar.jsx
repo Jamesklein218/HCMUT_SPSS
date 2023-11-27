@@ -20,7 +20,7 @@ const NavBar = () => {
           <p>Tạo bản in</p>
         </Link>
 
-        <Link to="/" className={getNavItemClass("/")}>
+        <Link to="/Home" className={getNavItemClass("/Home")}>
           <img src="./Images/home.png" alt="Home Icon" />
           <p>Trang chủ</p>
         </Link>
@@ -40,7 +40,7 @@ const NavBar = () => {
           <p>Xem hồ sơ</p>
         </Link>
 
-        <Link to="/Login" className={getNavItemClass("/Login")} id="logout">
+        <Link to="/" className={getNavItemClass("/")} id="logout">
           <img src="./Images/logout.png" alt="Logout Icon" />
           <p>Đăng xuất</p>
         </Link>
