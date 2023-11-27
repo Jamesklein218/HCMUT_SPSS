@@ -1,6 +1,6 @@
 // import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
-import { Home, BuyPaper, History, Print, Profile, Login } from "./Pages";
+import { Home, BuyPaper, History, Print, Profile, Login, PrintConfig } from "./Pages";
 import "./App.css";
 import { useEffect, useState } from "react";
 import { NavBar } from "./Components";
@@ -10,7 +10,7 @@ const MaybeShowNavbar = ({children}) => {
   const [showNavbar, setShowNavbar] = useState(false);
 
   useEffect(() => {
-    if (location.pathname === '/Login' || location.pathname === '/Print') {
+    if (location.pathname === '/Login' || location.pathname === '/Print' || location.pathname === '/PrintConfig') {
       setShowNavbar(false);
     }
     else {
@@ -49,6 +49,7 @@ function App() {
             <Route path="/History" element={<History printInfoItems={printInfoItems}/>} />
             <Route path="/Print" element={<Print />} />
             <Route path="/Profile" element={<Profile />} />
+            <Route path="/PrintConfig" element={<PrintConfig />} />
           </Routes>
         </div>
       </div>

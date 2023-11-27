@@ -1,0 +1,33 @@
+.print {
+    padding: 20px;
+    align-items: center;
+  }
+  
+  .back-button {
+    background-color: #fff;
+    border: 0px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add drop shadow */
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none; /* Remove underline for link behavior */
+  }
+  
+  .back-button img {
+    width: 15px;
+  }
+  
+  .print-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .file-drop-box {
+    border: 2px dashed #aaa;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
