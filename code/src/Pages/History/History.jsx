@@ -3,7 +3,7 @@ import React from 'react';
 import {PrintingLog, Header, Footer} from "../../Components";
 
 const History = (props) => {
-  const { printInfoItems } = props;
+  const { printInfoItems, updatePrintInfoItems } = props;
   return (
     <div className="home">
       <Header/>
@@ -17,12 +17,10 @@ const History = (props) => {
             {printInfoItems.map((printInfo, i) => (
                 <PrintingLog
                   key={i}
-                  fileName={printInfo.file}
-                  date={printInfo.date}
-                  printer={printInfo.printer}
-                  page={printInfo.page}
-                  printStatus={printInfo.printStatus}
-                />
+                  printingInfo={printInfo}
+                  printItems={printInfoItems}
+                  updatePrintInfoItems={updatePrintInfoItems}
+                  />
               ))}
             
           </div>

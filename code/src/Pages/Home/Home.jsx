@@ -5,6 +5,8 @@ import PrintingLog from "../../Components/PrintingLog/PrintingLog";
 
 const Home = (props) => {
   const { printInfoItems } = props;
+  const { updatePrintInfoItems } = props; 
+  const pendingPrints = printInfoItems.filter(item => item.printStatus === "Đang chờ");
   return (
     <div className="home">
       
@@ -36,14 +38,13 @@ const Home = (props) => {
 
           <div className="waitingLog">
             <p className="waitP">Đang chờ</p>
-            {printInfoItems.slice(0, 3).map((printInfo, i) => (
+            
+            {pendingPrints.slice(0, 3).map((printInfo, i) => (
                 <PrintingLog
                   key={i}
-                  fileName={printInfo.file}
-                  date={printInfo.date}
-                  printer={printInfo.printer}
-                  page={printInfo.page}
-                  printStatus={printInfo.printStatus}
+                  printItems={printInfoItems}
+                  printingInfo={printInfo}
+                  updatePrintInfoItems={updatePrintInfoItems}
                 />
               ))}
             
