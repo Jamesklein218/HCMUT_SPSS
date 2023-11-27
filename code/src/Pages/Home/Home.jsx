@@ -39,11 +39,8 @@ const Home = (props) => {
             {printInfoItems.slice(0, 3).map((printInfo, i) => (
                 <PrintingLog
                   key={i}
-                  fileName={printInfo.file}
-                  date={printInfo.date}
-                  printer={printInfo.printer}
-                  page={printInfo.page}
-                  printStatus={printInfo.printStatus}
+                  printItems={printInfoItems}
+                  printingInfo={printInfo}
                 />
               ))}
             
