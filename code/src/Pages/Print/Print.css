@@ -1,8 +1,13 @@
 .print {
     padding: 20px;
     align-items: center;
+    width: 100vw;
   }
   
+  .page-header {
+    display: flex;
+  }
+
   .back-button {
     background-color: #fff;
     border: 0px solid #ccc;
@@ -20,14 +25,34 @@
   }
   
   .print-header {
+    margin: 0 auto;
     text-align: center;
+    color: #42307D;
     margin-bottom: 20px;
   }
   
   .file-drop-box {
-    border: 2px dashed #aaa;
-    padding: 20px;
+    background-color: #fff;
+    border: 0px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add drop shadow */
+    padding: 40px;
+    margin: 30px;
     text-align: center;
     cursor: pointer;
+  }
+
+  .file-drop-box button {
+    background-color: #7F56D9;
+    border: 0px solid #ccc;
+    border-radius: 5px;
+    padding: 15px 30px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add drop shadow */
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none; /* Remove underline for link behavior */
+    margin-top: 20px;
   }
   

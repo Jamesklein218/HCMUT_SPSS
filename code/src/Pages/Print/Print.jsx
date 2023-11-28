@@ -36,13 +36,15 @@ const Print = () => {
 
   return (
     <div className="print">
-      <Link to="/">
-        <div className="back-button">
-          <img src="./Images/backarrow.png" alt="Back Icon" />
+      <div className="page-header">
+        <Link to="/Home">
+          <div className="back-button">
+            <img src="./Images/backarrow.png" alt="Back Icon" />
+          </div>
+        </Link>
+        <div className="print-header">
+          <h1>Tạo bản in mới</h1>
         </div>
-      </Link>
-      <div className="print-header">
-        <h1>Tạo bản in mới</h1>
       </div>
       <div
         className="file-drop-box"

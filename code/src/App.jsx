@@ -10,7 +10,7 @@ const MaybeShowNavbar = ({children}) => {
   const [showNavbar, setShowNavbar] = useState(false);
 
   useEffect(() => {
-    if (location.pathname === '/Login' || location.pathname === '/Print' || location.pathname === '/PrintConfig') {
+    if (location.pathname === '/' || location.pathname === '/Print' || location.pathname === '/PrintConfig') {
       setShowNavbar(false);
     }
     else {
@@ -48,7 +48,7 @@ function App() {
             <Route path="/History" element={<History printInfoItems={printInfoItems} updatePrintInfoItems={updatePrintInfoItems}/>} />
             <Route path="/Print" element={<Print />} />
             <Route path="/Profile" element={<Profile />} />
-            <Route path="/PrintConfig" element={<PrintConfig />} />
+            <Route path="/PrintConfig" element={<PrintConfig printInfoItems={printInfoItems} updatePrintInfoItems={updatePrintInfoItems}/>} />
             </Routes>
         </div>
       </div>
