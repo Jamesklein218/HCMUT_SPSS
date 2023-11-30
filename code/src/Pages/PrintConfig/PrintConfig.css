@@ -66,6 +66,11 @@
   .general-info {
     display: flex;
     justify-content: flex-start;
+    width: 100%;
+  }
+
+  .general-info-label {
+    width: 50%;
   }
   
   .config-item {
@@ -116,7 +121,8 @@
   .button-container {
     margin-top: auto;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    margin-bottom: 20px;
   }
 
   .check-button {
@@ -130,6 +136,7 @@
     align-items: center;
     cursor: pointer;
     text-decoration: none; 
+    margin-right: 30px;
   }
 
   .check-button img {

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import {PrintingLog, Footer } from "../../Components";
+import {PrintingLog, Footer, Modal } from "../../Components";
 import "./PrintConfig.css";
 
 const PrintConfig = (props) => {
-  const { printInfoItems, updatePrintInfoItems } = props;
+  const { updatePrintInfoItems, printInfoItems} = props;
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const location = useLocation();
   const { files } = location.state || {};
   console.log("Files in PrintConfig:", files);
@@ -31,6 +32,14 @@ const PrintConfig = (props) => {
     );
   };
 
+  const currentDate = new Date();
+
+  const day = currentDate.getDate().toString().padStart(2, '0');
+  const month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-based
+  const year = currentDate.getFullYear();
+
+  const formattedDate = `${day}/${month}/${year}`;
+
   // Placeholder content for the second column (printing configuration)
   const [printingConfig, setPrintingConfig] = useState([
     { type: "size", value: "" },
@@ -45,6 +54,25 @@ const PrintConfig = (props) => {
     updatedConfig[index] = { type, value };
     setPrintingConfig(updatedConfig);
   };
+
+  const handleButtonClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleConfirmModal = () => {
+    const rangeString = printingConfig[2].value;
+    const [start, end] = rangeString.split('-').map(value => parseInt(value.trim(), 10));
+    const num_page = Math.ceil((end - start + 1) * printingConfig[1].value / parseInt(printingConfig[3].value))
+
+    const newitems = { file: files[0].name, date: formattedDate, printer: printingConfig[4].value, page: `${num_page} trang`, printStatus: "Đang chờ" };
+    const newArray = [newitems, ...printInfoItems]
+    updatePrintInfoItems(newArray);
+    setIsModalOpen(false);
+  }
 
   // Placeholder content for the second column (printing configuration)
   const printingConfigItems = [
@@ -112,8 +140,8 @@ const PrintConfig = (props) => {
                               </>
                             ) : (
                               <>
-                                <option value="1-side">1</option>
-                                <option value="2-side">2</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
                               </>
                             )}
                           </select>
@@ -135,7 +163,7 @@ const PrintConfig = (props) => {
                           value={item.content}
                           onChange={(e) => handleConfigChange(4, e.target.value, "printer")}
                         >
-                          <option value="printer1">ABCXYZ</option>
+                          <option value="">ABCXYZ</option>
                           <option value="printer2">Printer 2</option>
                           {/* Add more printer options as needed */}
                         </select>
@@ -148,12 +176,16 @@ const PrintConfig = (props) => {
             ))}
             {/* Placeholder for buttons at the bottom */}
             <div className="button-container">
-              <Link to="/History">
-                <div className="check-button">
-                  <img src="./Images/checkmark.png" alt="Check Icon" />
-                  <p>Đăng ký</p>
-                </div>
-              </Link>
+              <button className= "check-button" onClick={handleButtonClick}>
+                <img style={{ width: '15px', height: 'auto' }} src="./Images/checkmark.png" alt="check" />
+                <p>Đăng ký</p>
+              </button>
+              
+  
+              {isModalOpen && 
+              <Modal onConfirm={handleConfirmModal} onClose={handleCloseModal} 
+              modalTitle={`Xác nhận`} modalMessage={`Khi bấm “Đồng ý" hệ thống sẽ tự động in và trừ số giấy trong tài khoản của bạn.`}/>}
+        
               <Link to="/Print">
                 <div className="bin-button">
                   <img src="./Images/bin.png" alt="Bin Icon" />
