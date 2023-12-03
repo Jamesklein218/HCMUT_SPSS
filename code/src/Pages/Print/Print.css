@@ -1,8 +1,14 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F2F4F7; /* Set the background color for the whole page */
+}
+
 .print {
     padding: 20px;
     align-items: center;
     width: 100vw;
-  }
+      }
   
   .page-header {
     display: flex;
@@ -34,19 +40,28 @@
   .file-drop-box {
     background-color: #fff;
     border: 0px solid #ccc;
-    padding: 10px;
+    border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add drop shadow */
-    padding: 40px;
-    margin: 30px;
+    padding: 50px;
+    margin: 30px 100px auto;
     text-align: center;
     cursor: pointer;
+    color: #667085;
+    font-weight: bold;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .file-drop-box img {
+    max-width: 100%;
+    height: auto;
   }
 
   .file-drop-box button {
     background-color: #7F56D9;
     border: 0px solid #ccc;
     border-radius: 5px;
-    padding: 15px 30px;
+    padding: 15px 45px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add drop shadow */
     color: #fff;
     display: inline-flex;

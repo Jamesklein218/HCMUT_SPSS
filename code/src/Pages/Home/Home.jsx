@@ -4,6 +4,7 @@ import {Header, Footer} from "../../Components";
 import PrintingLog from "../../Components/PrintingLog/PrintingLog";
 
 const Home = (props) => {
+  const { numberOfPages } = props;
   const { printInfoItems } = props;
   const { updatePrintInfoItems } = props; 
   const pendingPrints = printInfoItems.filter(item => item.printStatus === "Đang chờ");
@@ -29,7 +30,7 @@ const Home = (props) => {
             <div className="viewItem">
               <img src="./Images/file.png" alt="file" className="viewImg"></img>
               <div className="data">
-                <p className="value">12</p>
+                <p className="value">{numberOfPages.pages}</p>
                 <p className="description">Số giấy còn lại</p>
               </div>
             </div>

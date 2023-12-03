@@ -51,9 +51,10 @@ const Print = () => {
         onDrop={handleFileDrop}
         onDragOver={handleDragOver}
       >
-        <p>Drag & Drop files here</p>
+        <img src="./Images/uploadfile.png" alt="Uploadfile" />
+        <p>Bạn có thể kéo thả tập tin của bạn vào đây</p>
         <button type="button" onClick={handleBrowseClick}>
-          Browse Files
+          Tải lên
         </button>
         <input
           type="file"

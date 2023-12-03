@@ -34,6 +34,12 @@ function App() {
   const updatePrintInfoItems = (newPrintInfoItems) => {
     setPrintInfoItems(newPrintInfoItems);
   };
+
+  const [numberOfPages, setNumberOfPages] = useState( { pages: 99 }, );
+  const updateNumberOfPages = (newNumberOfPages) => {
+    setNumberOfPages(newNumberOfPages);
+  };
+
   return (
     <Router>
       <div className="App">
@@ -43,12 +49,12 @@ function App() {
         <div className="content">
           <Routes>
             <Route exact path="/" element={<Login />} />
-            <Route path="/Home" element={<Home printInfoItems={printInfoItems} updatePrintInfoItems={updatePrintInfoItems}/>} />
+            <Route path="/Home" element={<Home numberOfPages = {numberOfPages} printInfoItems={printInfoItems} updatePrintInfoItems={updatePrintInfoItems}/>} />
             <Route path="/BuyPaper" element={<BuyPaper />} />
             <Route path="/History" element={<History printInfoItems={printInfoItems} updatePrintInfoItems={updatePrintInfoItems}/>} />
             <Route path="/Print" element={<Print />} />
             <Route path="/Profile" element={<Profile />} />
-            <Route path="/PrintConfig" element={<PrintConfig printInfoItems={printInfoItems} updatePrintInfoItems={updatePrintInfoItems}/>} />
+            <Route path="/PrintConfig" element={<PrintConfig numberOfPages = {numberOfPages} printInfoItems={printInfoItems} updateNumberOfPages={updateNumberOfPages} updatePrintInfoItems={updatePrintInfoItems}/>} />
             </Routes>
         </div>
       </div>

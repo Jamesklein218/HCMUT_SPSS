@@ -5,7 +5,7 @@ import {PrintingLog, Footer, Modal } from "../../Components";
 import "./PrintConfig.css";
 
 const PrintConfig = (props) => {
-  const { updatePrintInfoItems, printInfoItems} = props;
+  const { updateNumberOfPages, numberOfPages, updatePrintInfoItems, printInfoItems} = props;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const location = useLocation();
   const { files } = location.state || {};
@@ -66,7 +66,11 @@ const PrintConfig = (props) => {
   const handleConfirmModal = () => {
     const rangeString = printingConfig[2].value;
     const [start, end] = rangeString.split('-').map(value => parseInt(value.trim(), 10));
-    const num_page = Math.ceil((end - start + 1) * printingConfig[1].value / parseInt(printingConfig[3].value))
+    const num_page = Math.ceil((end - start + 1) / parseInt(printingConfig[3].value)) * printingConfig[1].value
+    const pages_left = numberOfPages.pages - num_page
+    if (pages_left >= 0) {
+      updateNumberOfPages({pages: pages_left})
+    }
 
     const newitems = { file: files[0].name, date: formattedDate, printer: printingConfig[4].value, page: `${num_page} trang`, printStatus: "Đang chờ" };
     const newArray = [newitems, ...printInfoItems]
@@ -79,7 +83,7 @@ const PrintConfig = (props) => {
     { label: "General Information", content: files && getGeneralInfo(files[0]) },
     { label: "Printing Configuration", content: printingConfig.slice(0, 4) },
     { label: "Choose Printer", content: printingConfig[4].type },
-    { label: "Number of Paper", content: "4" },
+    { label: "Number of Paper", content: numberOfPages.pages },
   ];
 
   return (
@@ -167,6 +171,18 @@ const PrintConfig = (props) => {
                           <option value="printer2">Printer 2</option>
                           {/* Add more printer options as needed */}
                         </select>
+                      </div>
+                    </div>
+                  )  : item.label === "Number of Paper" ? (
+                    <div className="config-content">
+                      <div className="config-entry">
+                        <label>Giấy còn lại:</label>
+                        <p>{item.content}</p>
+                        <div className="buypaper-button">
+                          <Link to="/BuyPaper">
+                            <button>Buy Paper</button>
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   ) : (
