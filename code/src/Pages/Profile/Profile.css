@@ -1,0 +1,115 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    color: rgba(102,112,133,1);
+    font-size: 15px;
+    box-shadow: 0 -4px 4px 0px rgba(0, 0, 0, 0.1),
+              4px 0 4px 0 rgba(0, 0, 0, 0.1),
+              0 4px 4px 0 rgba(0, 0, 0, 0.1),
+              -4px 0 4px 0 rgba(0, 0, 0, 0.1);
+}
+.profileInfo{
+    margin-bottom: 40px;
+}
+
+.inputImage {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 50px;
+}
+
+.avatar{
+    height: 150px;
+    width: 150px;
+    border-radius: 10px;
+}
+
+.upload{
+    margin: auto 0 auto 16px;
+}
+
+.inputItem {
+    margin-bottom: 16px;
+    width: 140px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: #F4EBFF;
+    color: #7F56D9;
+}
+
+.require{
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.disableInput:disabled {
+    width: 430px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    background: #E4E7EC;
+    box-shadow: 0px 6px 15px 0px rgba(64, 79, 104, 0.05);
+    padding: 16px 18px;
+    color: #98A2B3;
+    margin-bottom: 16px;
+}
+
+.accountProp > p{
+    color: #000;
+    margin-bottom: 16px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.printProp{
+    display: flex;
+    flex-direction: row;
+}
+
+.printPropItem{
+    margin-right: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.printPropItem > div {
+    display: flex;
+    flex-direction: row;
+}
+
+.title {
+    color: #000;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px; 
+}
+
+.number{
+    color: #000;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px; 
+}
+
+.unit{
+    margin: auto 0 0 10px;
+    color: #000;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+}
