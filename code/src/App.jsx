@@ -1,6 +1,6 @@
 // import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
-import { Home, BuyPaper, History, Print, Profile, Login } from "./Pages";
+import { Home, BuyPaper, History, Print, Profile, Login, PrintConfig } from "./Pages";
 import "./App.css";
 import { useEffect, useState } from "react";
 import { NavBar } from "./Components";
@@ -10,7 +10,7 @@ const MaybeShowNavbar = ({children}) => {
   const [showNavbar, setShowNavbar] = useState(false);
 
   useEffect(() => {
-    if (location.pathname === '/' || location.pathname === '/Print') {
+    if (location.pathname === '/' || location.pathname === '/Print' || location.pathname === '/PrintConfig') {
       setShowNavbar(false);
     }
     else {
@@ -32,6 +32,7 @@ function App() {
   { file: "1236.pdf", date: "05/10/2023", printer: "B1-205", page: "11 trang", printStatus: "Đã hủy" },
   { file: "1237.pdf", date: "17/09/2023", printer: "C4-103", page: "15 trang", printStatus: "Thành công" },
   { file: "1238.pdf", date: "10/09/2023", printer: "B4-105", page: "16 trang", printStatus: "Thành công" },]);
+
 
   const [paperHistoryItems, setPaperHistoryItems] = useState([ { quantity: 90, cost:"123.053 VND", buyStatus: "Đang thanh toán", time: "13:00, 14/05/2023" },
   { quantity: 12, cost:"12.000 VND", buyStatus: "Đã thanh toán", time: "13:00, 14/05/2023" },
@@ -55,6 +56,11 @@ function App() {
   }
 
 
+
+  const updatePrintInfoItems = (newPrintInfoItems) => {
+    setPrintInfoItems(newPrintInfoItems);
+  };
+
   return (
     <Router>
       <div className="App">
@@ -69,11 +75,11 @@ function App() {
             <Route path="/History" element={<History printInfoItems={printInfoItems} updatePrintInfoItems={updatePrintInfoItems}/>} />
             <Route path="/Print" element={<Print />} />
             <Route path="/Profile" element={<Profile />} />
-          </Routes>
+            <Route path="/PrintConfig" element={<PrintConfig printInfoItems={printInfoItems} updatePrintInfoItems={updatePrintInfoItems}/>} />
+            </Routes>
         </div>
       </div>
     </Router>
   );
 }
-
 export default App;
