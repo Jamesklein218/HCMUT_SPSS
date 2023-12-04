@@ -55,12 +55,6 @@ function App() {
     setPage(newPage);
   }
 
-
-
-  const updatePrintInfoItems = (newPrintInfoItems) => {
-    setPrintInfoItems(newPrintInfoItems);
-  };
-
   return (
     <Router>
       <div className="App">
