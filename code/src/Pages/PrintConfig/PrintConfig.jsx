@@ -42,12 +42,16 @@ const PrintConfig = (props) => {
 
   // Placeholder content for the second column (printing configuration)
   const [printingConfig, setPrintingConfig] = useState([
-    { type: "size", value: "" },
-    { type: "number", value: "" },
-    { type: "range", value: "" },
-    { type: "paper", value: "" },
-    { type: "printer", value: "" }, // Added "printer" type
+    { type: "size", value: "A4" },
+    { type: "number", value: "1" },
+    { type: "range", value: "1 - 1" },
+    { type: "paper", value: "1" },
+    { type: "printer", value: "B4-105" }, // Added "printer" type
   ]);
+
+  const rangeString = printingConfig[2].value;
+  const [start, end] = rangeString.split('-').map(value => parseInt(value.trim(), 10));
+  const num_page = Math.ceil((end - start + 1) / parseInt(printingConfig[3].value)) * printingConfig[1].value
 
   const handleConfigChange = (index, value, type) => {
     const updatedConfig = [...printingConfig];
@@ -64,17 +68,14 @@ const PrintConfig = (props) => {
   };
 
   const handleConfirmModal = () => {
-    const rangeString = printingConfig[2].value;
-    const [start, end] = rangeString.split('-').map(value => parseInt(value.trim(), 10));
-    const num_page = Math.ceil((end - start + 1) / parseInt(printingConfig[3].value)) * printingConfig[1].value
     const pages_left = numberOfPages.pages - num_page
     if (pages_left >= 0) {
       updateNumberOfPages({pages: pages_left})
+      const newitems = { file: files[0].name, date: formattedDate, printer: printingConfig[4].value, page: `${num_page} trang`, printStatus: "Đang chờ" };
+      const newArray = [newitems, ...printInfoItems]
+      updatePrintInfoItems(newArray);
     }
 
-    const newitems = { file: files[0].name, date: formattedDate, printer: printingConfig[4].value, page: `${num_page} trang`, printStatus: "Đang chờ" };
-    const newArray = [newitems, ...printInfoItems]
-    updatePrintInfoItems(newArray);
     setIsModalOpen(false);
   }
 
@@ -82,7 +83,7 @@ const PrintConfig = (props) => {
   const printingConfigItems = [
     { label: "General Information", content: files && getGeneralInfo(files[0]) },
     { label: "Printing Configuration", content: printingConfig.slice(0, 4) },
-    { label: "Choose Printer", content: printingConfig[4].type },
+    { label: "Choose Printer", content: printingConfig[4] },
     { label: "Number of Paper", content: numberOfPages.pages },
   ];
 
@@ -102,9 +103,9 @@ const PrintConfig = (props) => {
         <div className="printconfig-content">
           {/* First Column */}
           <div className="first-column">
-            {files && files.length > 0 && (
-              <img src={URL.createObjectURL(files[0])} alt="File Preview" />
-            )}
+          {files && files.length > 0 && (
+            <img src={URL.createObjectURL(files[0])} alt="File Preview" />
+          )}
           </div>
           {/* Second Column */}
           <div className="second-column">
@@ -164,11 +165,12 @@ const PrintConfig = (props) => {
                       <div className="config-entry">
                         <label>Choose Printer:</label>
                         <select
-                          value={item.content}
+                          value={item.content.value}
                           onChange={(e) => handleConfigChange(4, e.target.value, "printer")}
                         >
-                          <option value="">ABCXYZ</option>
-                          <option value="printer2">Printer 2</option>
+                          <option value="B4-105">Máy in B4-105</option>
+                          <option value="A4-401">Máy in A4-401</option>
+                          <option value="C6-105">Máy in C6-105</option>
                           {/* Add more printer options as needed */}
                         </select>
                       </div>
@@ -180,7 +182,7 @@ const PrintConfig = (props) => {
                         <p>{item.content}</p>
                         <div className="buypaper-button">
                           <Link to="/BuyPaper">
-                            <button>Buy Paper</button>
+                            <p style={{fontSize: 14}}>Thêm giấy</p>
                           </Link>
                         </div>
                       </div>
@@ -190,9 +192,25 @@ const PrintConfig = (props) => {
                 )}
               </div>
             ))}
+              <div>
+                {(num_page > numberOfPages.pages) ? (
+                  <div className="msg">
+                    {/* Content to display when the condition is true */}
+                    <p>Lỗi: Không đủ giấy để in!</p>
+                  </div>
+                ) : (
+                  <div>
+                    {/* Content to display when the condition is false */}
+                  </div>
+                )}
+              </div>
             {/* Placeholder for buttons at the bottom */}
             <div className="button-container">
-              <button className= "check-button" onClick={handleButtonClick}>
+              <button 
+              className= "check-button" 
+              onClick={handleButtonClick} 
+              disabled={num_page > numberOfPages.pages}
+              >
                 <img style={{ width: '15px', height: 'auto' }} src="./Images/checkmark.png" alt="check" />
                 <p>Đăng ký</p>
               </button>
@@ -205,7 +223,7 @@ const PrintConfig = (props) => {
               <Link to="/Print">
                 <div className="bin-button">
                   <img src="./Images/bin.png" alt="Bin Icon" />
-                  <p>Bỏ tệp</p>
+                  <p style={{fontSize: 14}}>Bỏ tệp</p>
                 </div>
               </Link>
             </div>

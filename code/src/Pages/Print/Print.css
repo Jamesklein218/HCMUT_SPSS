@@ -36,19 +36,24 @@ body {
     color: #42307D;
     margin-bottom: 20px;
   }
+
+  .page-content {
+    display: flex;
+    justify-content: center;
+  }
   
   .file-drop-box {
     background-color: #fff;
     border: 0px solid #ccc;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add drop shadow */
-    padding: 50px;
+    padding: 40px;
     margin: 30px 100px auto;
     text-align: center;
     cursor: pointer;
     color: #667085;
     font-weight: bold;
-    max-width: 100%;
+    width: 700px;
     height: auto;
   }
 

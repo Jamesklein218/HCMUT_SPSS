@@ -117,7 +117,7 @@
     margin: 0px 5px;
     border: 2px solid #667085;
     border-radius: 5px;
-    height: 32px;
+    height: 33px;
     padding: 5px;
   }
 
@@ -127,7 +127,7 @@
     margin: 0px 5px;
     border: 2px solid #667085;
     border-radius: 5px;
-    height: 32px;
+    height: 33px;
   }
 
   .config-entry {
@@ -145,6 +145,31 @@
   select {
     flex: 1;
     /* Add any additional styling you need for the input/select */
+  }
+
+  .buypaper-button {
+    background-color: #F4EBFF;
+    border: 0px solid #ccc;
+    border-radius: 5px;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    padding: 8px 20px;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.2); /* Add drop shadow */
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none; /* Remove underline for link behavior */
+  }
+
+  .msg {
+    display: flex;
+    color: #F04438;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0 0 10px 0;
+    font-weight: bold;
   }
   
   .button-container {
@@ -173,12 +198,17 @@
     margin: 0px 5px;
 }
 
+.check-button:disabled {
+  opacity: 0.5;  /* You can adjust the opacity value as needed */
+  cursor: not-allowed;  /* Change the cursor to indicate it's not clickable */
+}
+
 .bin-button {
   background-color: #FEE4E2;
   border: 0px solid #ccc;
   border-radius: 5px;
   padding: 15px 25px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add drop shadow */
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.2); /* Add drop shadow */
   color: #F04438;
   display: inline-flex;
   align-items: center;

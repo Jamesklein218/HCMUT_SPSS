@@ -46,6 +46,7 @@ const Print = () => {
           <h1>Tạo bản in mới</h1>
         </div>
       </div>
+      <div className="page-content">
       <div
         className="file-drop-box"
         onDrop={handleFileDrop}
@@ -62,6 +63,7 @@ const Print = () => {
           style={{ display: "none" }}
           onChange={handleFileSelect}
         />
+      </div>
       </div>
     </div>
   );
