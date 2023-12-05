@@ -36,6 +36,7 @@ const Print = () => {
 
   return (
     <div className="print">
+      <div className="print-content">
       <div className="page-header">
         <Link to="/Home">
           <div className="back-button">
@@ -63,6 +64,7 @@ const Print = () => {
           style={{ display: "none" }}
           onChange={handleFileSelect}
         />
+      </div>
       </div>
       </div>
     </div>

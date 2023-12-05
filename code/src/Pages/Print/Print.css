@@ -1,10 +1,12 @@
-body {
+.print {
   margin: 0;
   padding: 0;
   background-color: #F2F4F7; /* Set the background color for the whole page */
+  width: 100vw;
+  height: 100vh;
 }
 
-.print {
+.print-content {
     padding: 20px;
     align-items: center;
     width: 100vw;
