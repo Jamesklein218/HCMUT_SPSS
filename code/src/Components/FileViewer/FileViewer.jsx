@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-export default function PdfViewerComponent(props) {
+function FileViewer(props) {
 	const containerRef = useRef(null);
 
 	useEffect(() => {
@@ -30,3 +30,5 @@ export default function PdfViewerComponent(props) {
 		/>
 	);
 }
+
+export default FileViewer;

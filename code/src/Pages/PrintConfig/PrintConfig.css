@@ -57,6 +57,11 @@
     width: 100%;
     height: auto;
   }
+
+  .PDF-viewer {
+    width: 100%;
+    height: auto;
+  }
   
   .second-column {
     flex: 1;

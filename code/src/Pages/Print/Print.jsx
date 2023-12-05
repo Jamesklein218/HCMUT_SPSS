@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./Print.css";
@@ -6,12 +6,33 @@ import "./Print.css";
 const Print = () => {
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
+  const allowedFormats = ["pdf", "xlsx", "xls", "ppt", "pptx", "doc", "docx", "image", "png", "jpeg", "jpg"];
+    // State to manage the error message
+    const [errorMessage, setErrorMessage] = useState(null);
+
+  const isFileFormatAllowed = (fileName) => {
+    // Extract the file extension from the file name
+    const fileExtension = fileName.split(".").pop().toLowerCase();
+  
+    // Check if the file extension is in the allowed formats array
+    return allowedFormats.includes(fileExtension);
+  };
 
   const handleFileDrop = (e) => {
     e.preventDefault();
     const files = e.dataTransfer.files;
     console.log("Dropped files:", files);
-    navigateToPrintConfig(files);
+
+    // Filter out files with disallowed formats
+    const allowedFiles = Array.from(files).filter((file) =>
+      isFileFormatAllowed(file.name)
+    );
+
+    if (allowedFiles.length > 0) {
+      navigateToPrintConfig(allowedFiles);
+    } else {
+      setErrorMessage("File không được hỗ trợ!");
+    }
   };
 
   const handleDragOver = (e) => {
@@ -25,7 +46,17 @@ const Print = () => {
   const handleFileSelect = (e) => {
     const files = e.target.files;
     console.log("Selected files:", files);
-    navigateToPrintConfig(files);
+
+    // Filter out files with disallowed formats
+    const allowedFiles = Array.from(files).filter((file) =>
+      isFileFormatAllowed(file.name)
+    );
+
+    if (allowedFiles.length > 0) {
+      navigateToPrintConfig(allowedFiles);
+    } else {
+      setErrorMessage("File không được hỗ trợ!");
+    }
   };
 
   const navigateToPrintConfig = (files) => {
@@ -66,6 +97,7 @@ const Print = () => {
         />
       </div>
       </div>
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
       </div>
     </div>
   );

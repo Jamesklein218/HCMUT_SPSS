@@ -77,4 +77,11 @@
     text-decoration: none; /* Remove underline for link behavior */
     margin-top: 20px;
   }
+
+  .error-message {
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+    color: red;
+  }
   

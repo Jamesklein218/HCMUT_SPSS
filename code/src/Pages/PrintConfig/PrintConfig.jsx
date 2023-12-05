@@ -1,31 +1,36 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import {PrintingLog, Footer, Modal } from "../../Components";
+import { Footer, Modal } from "../../Components";
+// import {PrintingLog } from "../../Components";
+import { FileViewer } from  "../../Components";
 import "./PrintConfig.css";
 
 const PrintConfig = (props) => {
   const { updateNumberOfPages, numberOfPages, updatePrintInfoItems, printInfoItems} = props;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const { files } = location.state || {};
   console.log("Files in PrintConfig:", files);
 
   // Function to get general information content
   const getGeneralInfo = (file) => {
     if (!file) return "No file information available";
+
+    const fileSizeKB = (file.size / 1024).toFixed(2);
     return (
       <>
         <div className="general-info">
           <div className="general-info-label">
-            <div>File Format: </div>
-            <div>File Name: </div>
-            <div>File Size: </div>
+            <div>Định dạng: </div>
+            <div>Tên tập tin: </div>
+            <div>Kích thước: </div>
           </div>
           <div className="general-info-content">
             <div>{file.type}</div>
             <div>{file.name}</div>
-            <div>{file.size} bytes</div>
+            <div>{fileSizeKB} KB</div>
           </div>
         </div>
       </>
@@ -77,14 +82,15 @@ const PrintConfig = (props) => {
     }
 
     setIsModalOpen(false);
+    navigate("/History");
   }
 
   // Placeholder content for the second column (printing configuration)
   const printingConfigItems = [
-    { label: "General Information", content: files && getGeneralInfo(files[0]) },
-    { label: "Printing Configuration", content: printingConfig.slice(0, 4) },
-    { label: "Choose Printer", content: printingConfig[4] },
-    { label: "Number of Paper", content: numberOfPages.pages },
+    { label: "Thông tin chung", content: files && getGeneralInfo(files[0]) },
+    { label: "Tùy chọn in ấn", content: printingConfig.slice(0, 4) },
+    { label: "Máy in", content: printingConfig[4] },
+    { label: "Số giấy", content: numberOfPages.pages },
   ];
 
   return (
@@ -104,7 +110,9 @@ const PrintConfig = (props) => {
           {/* First Column */}
           <div className="first-column">
           {files && files.length > 0 && (
-            <img src={URL.createObjectURL(files[0])} alt="File Preview" />
+            <div className="PDF-viewer">
+              <FileViewer document={URL.createObjectURL(files[0])} />
+            </div>
           )}
           </div>
           {/* Second Column */}
@@ -113,9 +121,9 @@ const PrintConfig = (props) => {
               <div key={index} className="config-item">
                 <h3>{item.label}</h3>
                 {/* Render the content based on the label */}
-                {item.label === "General Information" ? (
+                {item.label === "Thông tin chung" ? (
                   <div className="general-info">{item.content}</div>
-                  ) : item.label === "Printing Configuration" ? (
+                  ) : item.label === "Tùy chọn in ấn" ? (
                     <div className="config-content">
                       {item.content.map((entry, entryIndex) => (
                         <div key={entryIndex} className="config-entry">
@@ -160,10 +168,10 @@ const PrintConfig = (props) => {
                         </div>
                       ))}
                     </div>
-                  ) : item.label === "Choose Printer" ? (
+                  ) : item.label === "Máy in" ? (
                     <div className="config-content">
                       <div className="config-entry">
-                        <label>Choose Printer:</label>
+                        <label>Mã máy in:</label>
                         <select
                           value={item.content.value}
                           onChange={(e) => handleConfigChange(4, e.target.value, "printer")}
@@ -175,7 +183,7 @@ const PrintConfig = (props) => {
                         </select>
                       </div>
                     </div>
-                  )  : item.label === "Number of Paper" ? (
+                  )  : item.label === "Số giấy" ? (
                     <div className="config-content">
                       <div className="config-entry">
                         <label>Giấy còn lại:</label>
@@ -229,7 +237,7 @@ const PrintConfig = (props) => {
             </div>
           </div>
         </div>
-        <div className="historyLog">
+        {/* <div className="historyLog">
               {printInfoItems.map((printInfo, i) => (
                   <PrintingLog
                     key={i}
@@ -239,7 +247,7 @@ const PrintConfig = (props) => {
                     />
                 ))}
               
-        </div>
+        </div> */}
       </div>
       <Footer/>
     </div>
