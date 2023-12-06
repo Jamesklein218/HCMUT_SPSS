@@ -26,6 +26,11 @@ const MaybeShowNavbar = ({children}) => {
 function App() {
   // const [count, setCount] = useState(0);
   const [page, setPage] = useState (123);
+
+  const updatePage = (newPage) => {
+    setPage(newPage);
+  }
+
   const [printInfoItems, setPrintInfoItems] = useState([ { file: "1233.pdf", date: "27/10/2023", printer: "B4-105", page: "24 trang", printStatus: "Đang chờ" },
   { file: "1234.pdf", date: "26/10/2023", printer: "C4-103", page: "20 trang", printStatus: "Đang chờ" },
   { file: "1235.pdf", date: "12/10/2023", printer: "B1-205", page: "14 trang", printStatus: "Đang chờ" },
@@ -47,18 +52,9 @@ function App() {
     setPrintInfoItems(newPrintInfoItems);
   };
 
-  const [numberOfPages, setNumberOfPages] = useState( { pages: 99 }, );
-  const updateNumberOfPages = (newNumberOfPages) => {
-    setNumberOfPages(newNumberOfPages);
-  };
-
   const updatePaperHistoryItems = (newPaperHistoryItems) => {
     setPaperHistoryItems(newPaperHistoryItems);
   };
-
-  const updatePage = (newPage) => {
-    setPage(newPage);
-  }
 
   return (
     <Router>
@@ -69,12 +65,12 @@ function App() {
         <div className="content">
           <Routes>
             <Route exact path="/" element={<Login />} />
-            <Route path="/Home" element={<Home numberOfPages = {numberOfPages} printInfoItems={printInfoItems} updatePrintInfoItems={updatePrintInfoItems}/>} />
+            <Route path="/Home" element={<Home numberOfPages = {page} printInfoItems={printInfoItems} updatePrintInfoItems={updatePrintInfoItems}/>} />
             <Route path="/BuyPaper" element={<BuyPaper paperHistoryItems = {paperHistoryItems} updatePaperHistoryItems = {updatePaperHistoryItems} pageNumber = {page} updatePageNumber = {updatePage} />} />
             <Route path="/History" element={<History printInfoItems={printInfoItems} updatePrintInfoItems={updatePrintInfoItems}/>} />
             <Route path="/Print" element={<Print />} />
             <Route path="/Profile" element={<Profile />} />
-            <Route path="/PrintConfig" element={<PrintConfig numberOfPages = {numberOfPages} printInfoItems={printInfoItems} updateNumberOfPages={updateNumberOfPages} updatePrintInfoItems={updatePrintInfoItems}/>} />
+            <Route path="/PrintConfig" element={<PrintConfig numberOfPages = {page} printInfoItems={printInfoItems} updateNumberOfPages={updatePage} updatePrintInfoItems={updatePrintInfoItems}/>} />
             </Routes>
         </div>
       </div>

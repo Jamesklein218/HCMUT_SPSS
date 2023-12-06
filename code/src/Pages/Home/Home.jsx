@@ -30,7 +30,7 @@ const Home = (props) => {
             <div className="viewItem">
               <img src="./Images/file.png" alt="file" className="viewImg"></img>
               <div className="data">
-                <p className="value">{numberOfPages.pages}</p>
+                <p className="value">{numberOfPages}</p>
                 <p className="description">Số giấy còn lại</p>
               </div>
             </div>

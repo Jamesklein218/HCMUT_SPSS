@@ -73,9 +73,9 @@ const PrintConfig = (props) => {
   };
 
   const handleConfirmModal = () => {
-    const pages_left = numberOfPages.pages - num_page
+    const pages_left = numberOfPages - num_page
     if (pages_left >= 0) {
-      updateNumberOfPages({pages: pages_left})
+      updateNumberOfPages(pages_left)
       const newitems = { file: files[0].name, date: formattedDate, printer: printingConfig[4].value, page: `${num_page} trang`, printStatus: "Đang chờ" };
       const newArray = [newitems, ...printInfoItems]
       updatePrintInfoItems(newArray);
@@ -90,7 +90,7 @@ const PrintConfig = (props) => {
     { label: "Thông tin chung", content: files && getGeneralInfo(files[0]) },
     { label: "Tùy chọn in ấn", content: printingConfig.slice(0, 4) },
     { label: "Máy in", content: printingConfig[4] },
-    { label: "Số giấy", content: numberOfPages.pages },
+    { label: "Số giấy", content: numberOfPages },
   ];
 
   return (
@@ -201,7 +201,7 @@ const PrintConfig = (props) => {
               </div>
             ))}
               <div>
-                {(num_page > numberOfPages.pages) ? (
+                {(num_page > numberOfPages) ? (
                   <div className="msg">
                     {/* Content to display when the condition is true */}
                     <p>Lỗi: Không đủ giấy để in!</p>
@@ -217,7 +217,7 @@ const PrintConfig = (props) => {
               <button 
               className= "check-button" 
               onClick={handleButtonClick} 
-              disabled={num_page > numberOfPages.pages}
+              disabled={num_page > numberOfPages}
               >
                 <img style={{ width: '15px', height: 'auto' }} src="./Images/checkmark.png" alt="check" />
                 <p>Đăng ký</p>
