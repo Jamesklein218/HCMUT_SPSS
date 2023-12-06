@@ -1,6 +1,34 @@
 import "./Profile.css";
 import {Header, Footer} from "../../Components";
+import React, { useState } from 'react';
+
 const Profile = () => {
+  const [image, setImage] = useState(null);
+
+  const handleImageChange = (e) => {
+    const selectedFile = e.target.files[0];
+
+    if (selectedFile) {
+      // Check file size (max 1MB)
+      if (selectedFile.size > 1024 * 1024) {
+        alert('File size exceeds 1MB limit.');
+        return;
+      }
+
+      // Check file type (PNG or JPEG)
+      if (!['image/png', 'image/jpeg', 'image/jpg'].includes(selectedFile.type)) {
+        alert('Please select a PNG or JPEG image.');
+        return;
+      }
+
+      // Read and display the selected image
+      const reader = new FileReader();
+      reader.onload = () => {
+        setImage(reader.result);
+      };
+      reader.readAsDataURL(selectedFile);
+    }
+  };
     return (
       <div className="profileInfo">
         <Header/>
@@ -10,12 +38,19 @@ const Profile = () => {
           </div>
           <div className="profile">
             <div className="inputImage">
-              <img src="./Images/portrait.png" alt="portrait" className="avatar" />
+              <img src={image || "./Images/portrait.png"} alt="portrait" className="avatar" />
                 <div className="upload">
-                  <button className="inputItem" id="main">
-                      <p>Tải lên</p>
-                    </button>
-                    <p className="require">Tệp tin tối đa 1MB, tối thiểu 330x300. Hệ thống chỉ nhận PNG và JPEG</p>
+                  <label htmlFor="uploadInput" className="inputItem" id="main">
+                    <p>Tải lên</p>
+                  </label>
+                  <input
+                    type="file"
+                    id="uploadInput"
+                    accept=".png, .jpeg, .jpg"
+                    onChange={handleImageChange}
+                    style={{ display: 'none' }}
+                  />
+                  <p className="require">Tệp tin tối đa 1MB. Hệ thống chỉ nhận PNG, JPEG và JPG</p>
                 </div>            
             </div>
             <div className="info">

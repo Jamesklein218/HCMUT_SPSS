@@ -30,7 +30,7 @@
 .avatar{
     height: 150px;
     width: 150px;
-    border-radius: 10px;
+    border-radius: 50%;
 }
 
 .upload{
@@ -38,6 +38,9 @@
 }
 
 .inputItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 16px;
     width: 140px;
     height: 50px;
@@ -59,7 +62,7 @@
 }
 
 .disableInput:disabled {
-    width: 430px;
+    width: 25vw;
     height: 50px;
     border-radius: 10px;
     border: none;
