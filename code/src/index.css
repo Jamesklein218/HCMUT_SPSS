@@ -10,6 +10,7 @@ body {
   flex-direction: row;
   font-family: "Montserrat", sans-serif;
   overflow-x: hidden;
+
 }
 a {
   text-decoration: none;

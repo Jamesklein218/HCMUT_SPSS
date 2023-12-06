@@ -12,7 +12,7 @@ const History = (props) => {
           <div className="welcome">
             <p className="specialWelcome">Lịch sử in</p>
           </div>
-
+                   
           <div className="historyLog">
             {printInfoItems.map((printInfo, i) => (
                 <PrintingLog
