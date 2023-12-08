@@ -1,13 +1,23 @@
 import "./BuyPaper.css";
 import {Header, Footer, PaperLog, AddPaperModal, Modal} from "../../Components";
-import { useState } from "react";
+import { useState, useEffect  } from "react";
 
 const BuyPaper = (props) => {
-  const { paperHistoryItems , updatePaperHistoryItems, pageNumber,updatePageNumber } = props; 
+  const { paperHistoryItems , updatePaperHistoryItems, pageNumber, updatePageNumber } = props; 
   const [addModal, setAddModal] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [addValue, setAddValue] = useState(0);
-  
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(5);
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = paperHistoryItems.slice(indexOfFirstItem, indexOfLastItem);
+
+  useEffect(() => {
+    setCurrentPage(1); // Reset current page when items change
+  }, [paperHistoryItems]);
 
   const handleCloseModal = () => {
     setAddModal(false);
@@ -21,7 +31,6 @@ const BuyPaper = (props) => {
 
   const handleCloseModalOpen = () => {
     setIsModalOpen(false);
-
   };
 
   const handleConfirmModalOpen = () => {
@@ -71,21 +80,38 @@ const BuyPaper = (props) => {
                 </button>
             </div>
             <table className="table">
-              <tr className="buyHeader">
-                <th>STT</th>
-                <th>Số lượng</th>
-                <th>Số tiền</th>
-                <th>Trạng thái</th>
-                <th>Thời gian</th>
-              </tr>
-              {paperHistoryItems.map((buyPaperInfo, i) => (
-                  <PaperLog
-                    key={i}
-                    id = {i}
-                    buyInfo={buyPaperInfo}
-                    />
+              <thead>
+                <tr className="buyHeader">
+                  <th>STT</th>
+                  <th>Số lượng</th>
+                  <th>Số tiền</th>
+                  <th>Trạng thái</th>
+                  <th>Thời gian</th>
+                </tr>
+              </thead>
+              <tbody>
+                {currentItems.map((buyPaperInfo, i) => (
+                  <PaperLog key={i} id={i + indexOfFirstItem} buyInfo={buyPaperInfo} />
                 ))}
+              </tbody>
             </table>
+
+            {/* Pagination controls */}
+            <div className="pagination">
+              <button
+                onClick={() => setCurrentPage(currentPage - 1)}
+                disabled={currentPage === 1}
+              >
+                &#9665;
+              </button>
+              <span>{currentPage}</span>
+              <button
+                onClick={() => setCurrentPage(currentPage + 1)}
+                disabled={indexOfLastItem >= paperHistoryItems.length}
+              >
+                &#9655;
+              </button>
+            </div>
             
           </div>
           {addModal && 

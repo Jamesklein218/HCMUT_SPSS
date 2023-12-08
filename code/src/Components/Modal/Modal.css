@@ -25,17 +25,17 @@
     display: block;
   }
 
-  .cancel, .confirm {
+  .modalTitle, .modalMessage {
     text-align: center;
   }
 
-  .cancel {
+  .modalTitle {
     color: #42307D;
     font-weight: bold;
     margin-bottom: 20px;
   }
 
-  .confirm {
+  .modalMessage {
     color: #7F56D9;
     margin-bottom: 40px;
   }

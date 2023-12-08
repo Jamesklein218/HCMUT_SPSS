@@ -60,7 +60,10 @@ td{
     font-weight: bold;
 }
 
-
+.pagination {
+    display: flex;
+    justify-content: center;
+}
 
 
 .titleContainer{

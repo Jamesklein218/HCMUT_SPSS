@@ -26,10 +26,8 @@ const MaybeShowNavbar = ({children}) => {
 function App() {
   // const [count, setCount] = useState(0);
   const [page, setPage] = useState (123);
-
-  const updatePage = (newPage) => {
-    setPage(newPage);
-  }
+  
+  const [printTimes, setPrintTimes] = useState(6);
 
   const [printInfoItems, setPrintInfoItems] = useState([ { file: "1233.pdf", date: "27/10/2023", printer: "B4-105", page: "24 trang", printStatus: "Đang chờ" },
   { file: "1234.pdf", date: "26/10/2023", printer: "C4-103", page: "20 trang", printStatus: "Đang chờ" },
@@ -38,8 +36,7 @@ function App() {
   { file: "1237.pdf", date: "17/09/2023", printer: "C4-103", page: "15 trang", printStatus: "Thành công" },
   { file: "1238.pdf", date: "10/09/2023", printer: "B4-105", page: "16 trang", printStatus: "Thành công" },]);
 
-
-  const [paperHistoryItems, setPaperHistoryItems] = useState([ { quantity: 90, cost:"123.053 VND", buyStatus: "Đang thanh toán", time: "13:00, 14/05/2023" },
+  const [paperHistoryItems, setPaperHistoryItems] = useState([ { quantity: 90, cost:"90.000 VND", buyStatus: "Đang thanh toán", time: "13:00, 14/05/2023" },
   { quantity: 12, cost:"12.000 VND", buyStatus: "Đã thanh toán", time: "13:00, 14/05/2023" },
   { quantity: 12, cost:"12.000 VND", buyStatus: "Đã thanh toán", time: "13:00, 14/05/2023" },
   { quantity: 12, cost:"12.000 VND", buyStatus: "Đã thanh toán", time: "13:00, 14/05/2023" },
@@ -47,6 +44,21 @@ function App() {
   { quantity: 12, cost:"12.000 VND", buyStatus: "Đã thanh toán", time: "13:00, 14/05/2023" },
   { quantity: 12, cost:"12.000 VND", buyStatus: "Đã thanh toán", time: "13:00, 14/05/2023" },
   { quantity: 12, cost:"12.000 VND", buyStatus: "Đã thanh toán", time: "13:00, 14/05/2023" },]);
+  
+
+  const users = [
+    { username: 'student1', password: 'password1' },
+  ];
+
+  const countPrintStatusWait = printInfoItems.filter(item => item.printStatus === "Đang chờ").length;
+
+  const updatePage = (newPage) => {
+    setPage(newPage);
+  }
+
+  const updatePrintTimes = (newTimes) => {
+    setPrintTimes(newTimes);
+  }
 
   const updatePrintInfoItems = (newPrintInfoItems) => {
     setPrintInfoItems(newPrintInfoItems);
@@ -64,14 +76,14 @@ function App() {
         </MaybeShowNavbar>
         <div className="content">
           <Routes>
-            <Route exact path="/" element={<Login />} />
-            <Route path="/Home" element={<Home numberOfPages = {page} printInfoItems={printInfoItems} updatePrintInfoItems={updatePrintInfoItems}/>} />
+            <Route exact path="/" element={<Login users={users}/>} />
+            <Route path="/Home" element={<Home printTimes={printTimes} updatePrintTimes={updatePrintTimes} numberOfPages = {page} updatePage = {updatePage} printInfoItems={printInfoItems} updatePrintInfoItems={updatePrintInfoItems}/>} />
             <Route path="/BuyPaper" element={<BuyPaper paperHistoryItems = {paperHistoryItems} updatePaperHistoryItems = {updatePaperHistoryItems} pageNumber = {page} updatePageNumber = {updatePage} />} />
-            <Route path="/History" element={<History printInfoItems={printInfoItems} updatePrintInfoItems={updatePrintInfoItems}/>} />
+            <Route path="/History" element={<History page={page} updatePage={updatePage} printInfoItems={printInfoItems} printTimes={printTimes} updatePrintTimes={updatePrintTimes} updatePrintInfoItems={updatePrintInfoItems}/>} />
             <Route path="/Print" element={<Print />} />
-            <Route path="/Profile" element={<Profile />} />
-            <Route path="/PrintConfig" element={<PrintConfig numberOfPages = {page} printInfoItems={printInfoItems} updateNumberOfPages={updatePage} updatePrintInfoItems={updatePrintInfoItems}/>} />
-            </Routes>
+            <Route path="/Profile" element={<Profile printTimes={printTimes} page={page} waiting={countPrintStatusWait}/>} />
+            <Route path="/PrintConfig" element={<PrintConfig numberOfPages = {page} printInfoItems={printInfoItems} updateNumberOfPages={updatePage} updatePrintInfoItems={updatePrintInfoItems} printTimes={printTimes} updatePrintTimes={updatePrintTimes}/>} />
+          </Routes>
         </div>
       </div>
     </Router>

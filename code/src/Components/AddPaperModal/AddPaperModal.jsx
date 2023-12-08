@@ -9,8 +9,8 @@ const AddPaperModel = ({ onConfirm, onClose}) => {
       <div>
         <div className="overlay"></div>
         <div className="modal open">
-          <h2 className="cancel">Mua thêm giấy</h2>
-          <div className="confirm"><input ref={inputRef} type="number" name="" id="" min={1} className="pageBtn"/></div>
+          <h2 className="modalTitle">Mua thêm giấy</h2>
+          <div className="inputPaper"><input ref={inputRef} type="number" name="" id="" min={1} className="pageBtn"/></div>
           <div className="Btn">
           <button className="confirmBtn" onClick={() => onConfirm(inputRef.current.value)}>Đồng ý</button>
           <button className="cancelBtn" onClick={onClose}>Hủy bỏ</button>

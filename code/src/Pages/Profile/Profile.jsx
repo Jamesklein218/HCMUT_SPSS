@@ -2,26 +2,25 @@ import "./Profile.css";
 import {Header, Footer} from "../../Components";
 import React, { useState } from 'react';
 
-const Profile = () => {
+const Profile = (props) => {
+  const { waiting, page, printTimes } = props; 
+
   const [image, setImage] = useState(null);
 
   const handleImageChange = (e) => {
     const selectedFile = e.target.files[0];
 
     if (selectedFile) {
-      // Check file size (max 1MB)
       if (selectedFile.size > 1024 * 1024) {
         alert('File size exceeds 1MB limit.');
         return;
       }
 
-      // Check file type (PNG or JPEG)
       if (!['image/png', 'image/jpeg', 'image/jpg'].includes(selectedFile.type)) {
         alert('Please select a PNG or JPEG image.');
         return;
       }
 
-      // Read and display the selected image
       const reader = new FileReader();
       reader.onload = () => {
         setImage(reader.result);
@@ -66,21 +65,21 @@ const Profile = () => {
                 <div className="printPropItem">
                   <p className="title">Số lần in</p>
                   <div>
-                    <p className="number">13</p>
+                    <p className="number">{printTimes}</p>
                     <p className="unit">lần</p>
                   </div>
                 </div>
                 <div className="printPropItem">
                   <p className="title">Số giấy còn lại</p>
                   <div>
-                    <p className="number">17</p>
+                    <p className="number">{page}</p>
                     <p className="unit">tờ</p>
                   </div>
                 </div>
                 <div className="printPropItem">
                   <p className="title">Yêu cầu đang chờ</p>
                   <div>
-                    <p className="number">2</p>
+                    <p className="number">{waiting}</p>
                     <p className="unit">yêu cầu</p>
                   </div>
                 </div>

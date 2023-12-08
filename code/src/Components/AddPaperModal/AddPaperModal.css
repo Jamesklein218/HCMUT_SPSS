@@ -25,20 +25,21 @@
     display: block;
   }
 
-  .cancel, .confirm {
+  .modalTitle, .inputPaper {
     text-align: center;
   }
 
-  .cancel {
+  .modalTitle {
     color: #42307D;
     font-weight: bold;
     margin-bottom: 20px;
   }
 
-  .confirm {
+  .inputPaper {
     color: #7F56D9;
     height: 70px;
-    margin-bottom: 0px;
+    margin-bottom: 20px;
+
   }
 
   .Btn {
@@ -83,6 +84,7 @@
         padding: 0px 0px; 
         line-height: 52px;
         border: 1px solid  #42307D;
+        font-size: 1.3em;
         border-radius: 8px;
         text-align: center;
       }

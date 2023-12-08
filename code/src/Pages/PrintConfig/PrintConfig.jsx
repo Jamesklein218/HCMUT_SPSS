@@ -2,19 +2,17 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { Footer, Modal } from "../../Components";
-// import {PrintingLog } from "../../Components";
 import { FileViewer } from  "../../Components";
 import "./PrintConfig.css";
 
 const PrintConfig = (props) => {
-  const { updateNumberOfPages, numberOfPages, updatePrintInfoItems, printInfoItems} = props;
+  const { updateNumberOfPages, numberOfPages, updatePrintInfoItems, printInfoItems, printTimes, updatePrintTimes} = props;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const { files } = location.state || {};
-  console.log("Files in PrintConfig:", files);
 
-  // Function to get general information content
+// Function to get general information content
   const getGeneralInfo = (file) => {
     if (!file) return "No file information available";
 
@@ -45,13 +43,13 @@ const PrintConfig = (props) => {
 
   const formattedDate = `${day}/${month}/${year}`;
 
-  // Placeholder content for the second column (printing configuration)
+// Placeholder content for the second column (printing configuration)
   const [printingConfig, setPrintingConfig] = useState([
     { type: "size", value: "A4" },
     { type: "number", value: "1" },
     { type: "range", value: "1 - 1" },
     { type: "paper", value: "1" },
-    { type: "printer", value: "B4-105" }, // Added "printer" type
+    { type: "printer", value: "B4-105" }
   ]);
 
   const rangeString = printingConfig[2].value;
@@ -76,6 +74,7 @@ const PrintConfig = (props) => {
     const pages_left = numberOfPages - num_page
     if (pages_left >= 0) {
       updateNumberOfPages(pages_left)
+      updatePrintTimes(printTimes+1)
       const newitems = { file: files[0].name, date: formattedDate, printer: printingConfig[4].value, page: `${num_page} trang`, printStatus: "Đang chờ" };
       const newArray = [newitems, ...printInfoItems]
       updatePrintInfoItems(newArray);
@@ -145,7 +144,6 @@ const PrintConfig = (props) => {
                             value={entry.value}
                             onChange={(e) => handleConfigChange(entryIndex, e.target.value, entry.type)}
                           >
-                            {/* <option value="">{entry.type === "size" ? "Chọn cỡ giấy" : "Chọn số mặt"}</option> */}
                             {entry.type === "size" ? (
                               <>
                                 <option value="A4">A4</option>
@@ -179,7 +177,6 @@ const PrintConfig = (props) => {
                           <option value="B4-105">Máy in B4-105</option>
                           <option value="A4-401">Máy in A4-401</option>
                           <option value="C6-105">Máy in C6-105</option>
-                          {/* Add more printer options as needed */}
                         </select>
                       </div>
                     </div>
@@ -226,7 +223,7 @@ const PrintConfig = (props) => {
   
               {isModalOpen && 
               <Modal onConfirm={handleConfirmModal} onClose={handleCloseModal} 
-              modalTitle={`Xác nhận`} modalMessage={`Khi bấm “Đồng ý" hệ thống sẽ tự động in và trừ số giấy trong tài khoản của bạn.`}/>}
+              modalTitle={`Xác nhận`} modalMessage={`Khi bấm "Đồng ý" hệ thống sẽ tự động in và trừ số giấy trong tài khoản của bạn.`}/>}
         
               <Link to="/Print">
                 <div className="bin-button">
@@ -237,17 +234,6 @@ const PrintConfig = (props) => {
             </div>
           </div>
         </div>
-        {/* <div className="historyLog">
-              {printInfoItems.map((printInfo, i) => (
-                  <PrintingLog
-                    key={i}
-                    printingInfo={printInfo}
-                    printItems={printInfoItems}
-                    updatePrintInfoItems={updatePrintInfoItems}
-                    />
-                ))}
-              
-        </div> */}
       </div>
       <Footer/>
     </div>

@@ -4,7 +4,8 @@ import {Header, Footer} from "../../Components";
 import PrintingLog from "../../Components/PrintingLog/PrintingLog";
 
 const Home = (props) => {
-  const { numberOfPages } = props;
+  const { numberOfPages, updatePage } = props;
+  const {printTimes, updatePrintTimes} = props;
   const { printInfoItems } = props;
   const { updatePrintInfoItems } = props; 
   const pendingPrints = printInfoItems.filter(item => item.printStatus === "Đang chờ");
@@ -22,7 +23,7 @@ const Home = (props) => {
             <div className="viewItem">
               <img src="./Images/impPrinter.png" alt="impPrinter" className="viewImg"></img>
               <div className="data">
-                <p className="value">12</p>
+                <p className="value">{printTimes}</p>
                 <p className="description">Số lần in</p>
               </div>
             </div>
@@ -40,10 +41,14 @@ const Home = (props) => {
           <div className="waitingLog">
             <p className="waitP">Đang chờ</p>
             
-            {pendingPrints.slice(0, 3).map((printInfo, i) => (
+            {pendingPrints.map((printInfo, i) => (
                 <PrintingLog
                   key={i}
                   printItems={printInfoItems}
+                  printTimes={printTimes}
+                  numberOfPages={numberOfPages}
+                  updatePage={updatePage}
+                  updatePrintTimes={updatePrintTimes}
                   printingInfo={printInfo}
                   updatePrintInfoItems={updatePrintInfoItems}
                 />

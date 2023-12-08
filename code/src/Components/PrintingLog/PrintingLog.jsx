@@ -2,7 +2,7 @@ import "./PrintingLog.css";
 import React, { useState } from 'react';
 import Modal from "../Modal/Modal";
 const PrintingLog = (props) => {
-    const { printingInfo, updatePrintInfoItems, printItems} = props;
+    const { printingInfo, updatePrintInfoItems, printItems, printTimes, updatePrintTimes, numberOfPages, updatePage} = props;
     const [isModalOpen, setIsModalOpen] = useState(false);
     let statusClassName;
 
@@ -24,6 +24,8 @@ const PrintingLog = (props) => {
     const handleConfirmModal = () => {
       const newArray = printItems.filter(item => item !== printingInfo);
       updatePrintInfoItems(newArray);
+      updatePrintTimes(printTimes-1)
+      updatePage(numberOfPages + parseInt(printingInfo.page, 10))
       setIsModalOpen(false);
     }
 
