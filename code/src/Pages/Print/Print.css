@@ -1,0 +1,87 @@
+.print {
+  margin: 0;
+  padding: 0;
+  background-color: #F2F4F7; /* Set the background color for the whole page */
+  width: 100vw;
+  height: 100vh;
+}
+
+.print-content {
+    padding: 20px;
+    align-items: center;
+    width: 100vw;
+      }
+  
+  .page-header {
+    display: flex;
+  }
+
+  .back-button {
+    background-color: #fff;
+    border: 0px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add drop shadow */
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none; /* Remove underline for link behavior */
+  }
+  
+  .back-button img {
+    width: 15px;
+  }
+  
+  .print-header {
+    margin: 0 auto;
+    text-align: center;
+    color: #42307D;
+    margin-bottom: 20px;
+  }
+
+  .page-content {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .file-drop-box {
+    background-color: #fff;
+    border: 0px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add drop shadow */
+    padding: 40px;
+    margin: 30px 100px auto;
+    text-align: center;
+    cursor: pointer;
+    color: #667085;
+    font-weight: bold;
+    width: 700px;
+    height: auto;
+  }
+
+  .file-drop-box img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .file-drop-box button {
+    background-color: #7F56D9;
+    border: 0px solid #ccc;
+    border-radius: 5px;
+    padding: 15px 45px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add drop shadow */
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none; /* Remove underline for link behavior */
+    margin-top: 20px;
+  }
+
+  .error-message {
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+    color: red;
+  }
+  

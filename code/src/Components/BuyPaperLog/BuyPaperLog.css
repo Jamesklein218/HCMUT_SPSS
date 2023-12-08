@@ -1,0 +1,26 @@
+.waiting {
+    background-color: #FEF0C7;
+    color: #F79009;
+    width: fit-content;
+    border-radius: 30px;
+    padding: 10px 30px;
+    margin-top: 15px;
+  }
+
+  .canceled {
+    background-color: #FEE4E2;
+    color: #F04438;
+    width: fit-content;
+    border-radius: 30px;
+    padding: 10px 30px;
+    margin-top: 15px;
+  }
+  
+  .success {
+    background-color: #D6EDDC;
+    color: #34A853;
+    width: fit-content;
+    border-radius: 30px;
+    padding: 10px 30px;
+    margin-top: 15px;
+  }

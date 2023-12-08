@@ -1,0 +1,82 @@
+
+.printInfo {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    padding: 20px 50px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 -4px 4px 0px rgba(0, 0, 0, 0.1),
+              4px 0 4px 0 rgba(0, 0, 0, 0.1),
+              0 4px 4px 0 rgba(0, 0, 0, 0.1),
+              -4px 0 4px 0 rgba(0, 0, 0, 0.1);
+  }
+  
+  .printInfo:last-child {
+    margin-bottom: 0;
+  }
+  
+  .name {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+  }
+  
+  .infoItemList {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .infoItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 30px;
+  }
+  
+  .infoItem img {
+    margin-right: 5px;
+  }
+  
+  .waiting {
+    background-color: #FEF0C7;
+    color: #F79009;
+    width: fit-content;
+    border-radius: 30px;
+    padding: 10px 30px;
+    margin-top: 15px;
+  }
+
+  .canceled {
+    background-color: #FEE4E2;
+    color: #F04438;
+    width: fit-content;
+    border-radius: 30px;
+    padding: 10px 30px;
+    margin-top: 15px;
+  }
+  
+  .success {
+    background-color: #D6EDDC;
+    color: #34A853;
+    width: fit-content;
+    border-radius: 30px;
+    padding: 10px 30px;
+    margin-top: 15px;
+  }
+  
+  .bin.waiting{
+    display: flex;
+    align-items: center;
+    margin: auto 0 auto auto;
+    border: none;
+    cursor: pointer; 
+    width: fit-content;
+    padding: 0;
+    height: fit-content;
+    background-color: white;
+  }
+
+  .bin {
+    display: none;
+  }
