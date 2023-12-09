@@ -40,6 +40,8 @@ Full documentation are available at the docs directory of this repository.
 
 ## Installation Manual
 
+[READ ME](/code/README.md)
+
 ## Contributors
 - [Nguyen Thanh Tung]()
 - [Nguyen Manh Thanh]()
