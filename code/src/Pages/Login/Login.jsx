@@ -2,6 +2,8 @@ import "./Login.css";
 import { useNavigate  } from "react-router-dom";
 import React, { useState } from 'react';
 
+import { ReactComponent as Logo } from '../../assets/logo.svg';
+
 const Login = ({users}) => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
@@ -30,7 +32,7 @@ const Login = ({users}) => {
 
         <div className="rightLogin">
           <div className="logo">
-            <img src="./Images/logo.png" alt="Logo" />
+            <Logo width={160} />
           </div>
           <div className="welcomeLogin">
             <img src="./Images/loginImage.png" alt="lImage"></img>

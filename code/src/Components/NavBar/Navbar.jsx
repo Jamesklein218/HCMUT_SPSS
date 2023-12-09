@@ -2,6 +2,8 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./NavBar.css";
 
+import { ReactComponent as Logo } from "../../assets/logo.svg";
+
 const NavBar = () => {
   const location = useLocation();
 
@@ -12,7 +14,7 @@ const NavBar = () => {
   return (
     <nav className="navbar">
       <div className="logo">
-        <img src="./Images/logo.png" alt="Logo" />
+        <Logo width={160} />
       </div>
       <div className="navbar-content">
         <Link to="/Print" className={getNavItemClass("/Print")} id="mainFunction">

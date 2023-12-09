@@ -10,7 +10,6 @@ function FileViewer(props) {
 			PSPDFKit = await import('pspdfkit');
 			PSPDFKit.unload(container);
 
-      console.log(`${window.location.protocol}//${window.location.host}/assets`)
 			instance = await PSPDFKit.load({
 				// Container where PSPDFKit should be mounted.
 				container,
