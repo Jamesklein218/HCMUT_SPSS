@@ -67,7 +67,7 @@ Below is the link to access our component diagram for a better view: [https://dr
   <img src="images/Component.png" alt="Component" width="600" />
 </picture>
 
-The diagram depicts the interactions between different components in the Printing service module (Students’ side). The system revolves around 4 layers that are described in layered architecture part.
+The diagram depicts the interactions between different components in the Printing service module (Students’ side). The system revolves around 4 layers that are described in layered architecture, communicating with each other via interfaces to hide the code from other layers, leading to more modular and maintainable code and less security risks. 
 
 ## Presentation Layer
 - **Login View**: Render the Account authentication interface from component Account Logic (internal component Authentication)
