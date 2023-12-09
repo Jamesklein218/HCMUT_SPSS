@@ -63,8 +63,20 @@ td{
 .pagination {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
+.pagination button {
+    font-size: 1.6em;
+    color: #7F56D9;
+    background-color: white;
+    margin: 0 10px;
+    border: none;
+}
+
+.pagination span {
+    font-size: 1.2em;
+}
 
 .titleContainer{
     display: flex;
