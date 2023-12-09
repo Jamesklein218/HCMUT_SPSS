@@ -3,31 +3,7 @@ import {Header, Footer} from "../../Components";
 import React, { useState } from 'react';
 
 const Profile = (props) => {
-  const { waiting, page, printTimes } = props; 
-
-  const [image, setImage] = useState(null);
-
-  const handleImageChange = (e) => {
-    const selectedFile = e.target.files[0];
-
-    if (selectedFile) {
-      if (selectedFile.size > 1024 * 1024) {
-        alert('File size exceeds 1MB limit.');
-        return;
-      }
-
-      if (!['image/png', 'image/jpeg', 'image/jpg'].includes(selectedFile.type)) {
-        alert('Please select a PNG or JPEG image.');
-        return;
-      }
-
-      const reader = new FileReader();
-      reader.onload = () => {
-        setImage(reader.result);
-      };
-      reader.readAsDataURL(selectedFile);
-    }
-  };
+  const { waiting, page, printTimes, image, handleImageChange } = props; 
     return (
       <div className="profileInfo">
         <Header/>
