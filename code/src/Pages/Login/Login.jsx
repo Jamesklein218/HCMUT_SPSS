@@ -6,6 +6,7 @@ const Login = ({users}) => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleLoginClick = () => {
     const user = users.find((user) => user.username === username);
@@ -14,10 +15,10 @@ const Login = ({users}) => {
       if (user.password === password) {
         navigate("/Home");
       } else {
-        alert('Incorrect password');
+        setErrorMsg('Wrong password');
       }
     } else {
-      alert('Username not found');
+      setErrorMsg('User not found');
     }
   };
 
@@ -57,6 +58,8 @@ const Login = ({users}) => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
+
+            <p className="errorMsg">{errorMsg}</p>
 
             <br/>
             <button className="loginBtn" onClick={handleLoginClick}>
